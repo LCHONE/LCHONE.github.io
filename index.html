@@ -1,9 +1,47 @@
 <!DOCTYPE html>
-  <html style="width: 100%; height: 100%;">
-  <head>
-    <meta charset="utf-8">
-  </head>
-  <body style="width: 100%; height: 100%; padding: 0; margin: 0;">
-    <embed src="https://lchone.github.io/C%239%20and%20.NET%205.%20Modern%20Cross-Platform%20Development%20by%20Mark%20J.%20Price%20(z-lib.org).pdf" type="application/pdf"  style="width: 100%; height: 100%;">
-  </body>
+<html style="width: 100%; height: 100%;">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    .booklist {
+      margin: 200px auto;
+      text-align: center;
+    }
+
+    .booklist>div {
+      cursor: pointer;
+    }
+
+    .booklist>div:hover {
+      color: blue;
+    }
+
+  </style>
+</head>
+
+<body style="width: 100%; height: 100%; padding: 0; margin: 0;">
+  <div class="booklist" id='booklist'>
+    <div onclick="handleClickBook(0)">《C#9 and .NET 5. Modern Cross-Platform Development》</div>
+  </div>
+
+  <script>
+    const bookSrcList = [
+      'https://lchone.github.io/C%239%20and%20.NET%205.%20Modern%20Cross-Platform%20Development%20by%20Mark%20J.%20Price%20(z-lib.org).pdf'
+    ];
+
+    function handleClickBook(index) {
+      document.getElementById('booklist').style.display = 'none';
+
+      const theSrc = bookSrcList[index];
+      const embedEle = document.createElement('embed');
+      embedEle.setAttribute('id', 'activeBook');
+      embedEle.setAttribute('src', theSrc);
+      embedEle.setAttribute('type', 'application/pdf');
+      embedEle.setAttribute('style', 'width: 100%; height: 100%;');
+      document.body.appendChild(embedEle);
+    }
+  </script>
+</body>
+
 </html>
